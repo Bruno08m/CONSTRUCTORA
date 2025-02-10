@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constructora ALISTAR - Innovación y Excelencia en Construcción</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-papNMVbih7fDkXXoZpy7Q2tW7JeO1gqO4MUEV3GimJlwqY+3kMFeS9fE/V+8aU1Kp7+5P8sd7eC0xYbC3d0Xeg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ====================================================
+       RESET Y CONFIGURACIÓN GLOBAL
+    ==================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+    }
+    /* ====================================================
+       HEADER Y NAVEGACIÓN
+    ==================================================== */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    nav {
+      display: flex;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #eaeaea;
+    }
+    /* Menú hamburguesa para dispositivos móviles */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    /* ====================================================
+       SECCIÓN HERO CON VIDEO DE FONDO
+    ==================================================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    .hero .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #ffb325f5;
+      padding: 20px;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+    .hero .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .hero .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    .hero .hero-content .btn {
+      padding: 15px 40px;
+      background: #ff6f61;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero .hero-content .btn:hover {
+      background: #e85550;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* ====================================================
+       MAIN Y SECCIONES
+    ==================================================== */
+    main {
+      margin-top: 80px; /* espacio para el header */
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin: 60px 0 20px;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      width: 100px;
+      height: 4px;
+      background: #ff6f61;
+      display: block;
+      margin: 10px auto 0;
+    }
+    /* ====================================================
+       SECCIÓN: ACERCA DE NOSOTROS
+    ==================================================== */
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 10px 20px;
+      background: #fff;
+    }
+    #about .about-text {
+      flex: 1 1 400px;
+      padding: 20px;
+    }
+    #about .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    #about .about-text p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    #about .about-img {
+      flex: 1 1 400px;
+      padding: 20px;
+    }
+    #about .about-img img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    /* ====================================================
+       SECCIÓN: NUESTROS PROYECTOS (PORTAFOLIO)
+    ==================================================== */
+    #portfolio {
+      background: #f9f9f9;
+      padding: 60px 20px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .portfolio-item:hover img {
+      animation-play-state: paused;
+      transform: scale(1.05);
+    }
+    .item-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .portfolio-item:hover .item-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .item-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .item-content p {
+      font-size: 1rem;
+      color: #555;
+    }
+    /* ====================================================
+       SECCIÓN: SERVICIOS (ACORDEÓN)
+    ==================================================== */
+   /* Sección de servicios con imagen de fondo */
+#services {
+  position: relative;
+  background: url('empresa.jpeg') no-repeat center center;
+  background-size: cover;
+  padding: 60px 20px;
+  /* Opcional: si deseas un color base en caso de que la imagen tarde en cargar
+     background-color: #fff; */
+  color: #e9b108; /* Ajusta el color del texto si es necesario */
+}
+
+/* Capa overlay para oscurecer la imagen y mejorar la legibilidad */
+#services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad según necesites */
+  z-index: 0;
+}
+
+/* Aseguramos que el contenido de la sección se muestre por encima del overlay */
+#services .accordion,
+#services h2,
+#services .accordion-item,
+#services .accordion-header,
+#services .accordion-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos del acordeón */
+.accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background: #f7f7f7;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+  background: #ff6f61;
+  color: #fff;
+}
+
+.accordion-header h4 {
+  font-size: 1.2rem;
+}
+
+.accordion-header i {
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-header {
+  background: #ff6f61;
+  color: #fff;
+}
+
+.accordion-item.active .accordion-header i {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #fff;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 300px;
+  padding: 15px 20px;
+}
+
+.accordion-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+    /* ====================================================
+       SECCIÓN: TESTIMONIOS
+    ==================================================== */
+    #testimonials {
+      background: #f9f9f9;
+      padding: 60px 20px;
+    }
+    .testimonials-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .testimonial {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .testimonial p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #444;
+    }
+    .testimonial .client {
+      font-weight: 600;
+      color: #222;
+    }
+    .testimonial .client::before {
+      content: '"';
+      font-size: 2rem;
+      vertical-align: top;
+      color: #ff6f61;
+    }
+    /* ===============================
+   SECCIÓN: NUESTRO EQUIPO
+=============================== */
+#team {
+  padding: 60px 20px;
+  background: #fff;
+}
+
+#team .section-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  color: #222;
+}
+
+#team .section-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: #ff6f61;
+  display: block;
+  margin: 10px auto 0;
+}
+
+/* Cuadrícula para el equipo */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Tarjeta individual del miembro */
+.team-member {
+  background: #f9f9f9;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del miembro: estilo circular con borde y efecto hover */
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ff6f61;
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.team-member:hover img {
+  transform: scale(1.05);
+}
+
+/* Nombre y cargo */
+.team-member h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: #222;
+  font-weight: 600;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #555;
+}
+/* Botón de WhatsApp */
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25d366; /* Color oficial de WhatsApp */
+    color:  #f9f9f9;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* ===============================
+   ANIMACIÓN "REVEAL" (OPCIONAL)
+=============================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===============================
+   RESPONSIVE PARA MÓVILES
+=============================== */
+@media (max-width: 600px) {
+  .team-member img {
+    width: 120px;
+    height: 120px;
+  }
+  .team-member h3 {
+    font-size: 1.3rem;
+  }
+  .team-member p {
+    font-size: 0.9rem;
+  }
+}
+
+    /* ====================================================
+       SECCIÓN: CONTACTO
+    ==================================================== */
+  /* Sección de contacto */
+#contact {
+  background: #fff;
+  padding: 60px 20px;
+}
+
+/* Contenedor centralizado */
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Formulario de contacto con espaciado entre elementos */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Estilos para inputs y textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Enfoque para inputs y textarea */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+
+/* Botón de envío */
+.contact-form button {
+  padding: 1rem 2rem;
+  background: #ff6f61;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+/* Hover para el botón */
+.contact-form button:hover {
+  background: #e85550;
+}
+
+    /* ====================================================
+       FOOTER
+    ==================================================== */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    footer .social a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    footer .social a:hover {
+      color: #ff6f61;
+    }
+    /* ====================================================
+       RESPONSIVE & MENÚ MÓVIL
+    ==================================================== */
+    @media (max-width: 992px) {
+      #about {
+        flex-direction: column;
+      }
+      .hero .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero .hero-content p {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 250px;
+        height: calc(100% - 60px);
+        background: rgba(0,0,0,0.9);
+        padding: 20px;
+        gap: 15px;
+        transition: right 0.3s ease;
+      }
+      nav ul.show {
+        right: 0;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    /* ====================================================
+       ANIMACIONES "REVEAL" AL HACER SCROLL
+    ==================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER CON NAVEGACIÓN -->
+  <header>
+    <div class="logo">Constructora ALISTAR</div>
+    <i class="fas fa-bars hamburger" aria-label="Menú"></i>
+    <nav>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#about">Acerca</a></li>
+        <li><a href="#portfolio">Proyectos</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#testimonials">Testimonios</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  f
+  <!-- SECCIÓN HERO CON VIDEO -->
+  <section class="hero" id="hero">
+    <img src="portada.jpg" width="1400px">
+
+    <div class="hero-content reveal">
+      <h1>Construyendo el Futuro</h1>
+      <p>Innovación, calidad y compromiso en cada proyecto.</p>
+      <button class="btn" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'});">Conócenos</button>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN: ACERCA DE NOSOTROS -->
+  <section id="about">
+    <div class="about-text reveal">
+      <h2 class="section-title">Acerca de Nosotros</h2>
+      <p>Somos una empresa constructora líder en el mercado, con más de 20 años de experiencia en proyectos de gran envergadura. Nuestro compromiso es transformar ideas en realidades sostenibles, integrando innovación y eficiencia en cada etapa de la construcción.</p>
+      <p>Nuestra misión es ofrecer soluciones integrales que superen las expectativas de nuestros clientes, utilizando materiales de alta calidad y técnicas vanguardistas que garantizan seguridad, estética y funcionalidad.</p>
+    </div>
+    <div class="about-img reveal">
+      <img src="opcion 2.jpg" alt="Nuestro Equipo">
+    </div>
+  </section>
+
+  <!-- SECCIÓN: NUESTROS PROYECTOS -->
+  <section id="portfolio">
+    <h2 class="section-title reveal">Nuestros Proyectos</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <img src="aeropuerot.jpg" alt="Proyecto 1">
+        <div class="item-content">
+          <h3>AEROPUERTO GENERAL MOSCONI</h3>
+          <p>.</p>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="hierros.jpeg" alt="Proyecto 2">
+        <div class="item-content">
+          <h3>INFRAESTRUCTURA URBANA</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="hormigon.jpeg" alt="Proyecto 3">
+        <div class="item-content">
+          <h3>OBRA PUBLICA MURO DE CONTENCION Y PAVIMENTACION   </h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="soldador.jpg" alt="Proyecto 3">
+        <div class="item-content">
+          <h3>PRESTACION DE SERVICIO YPF</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="vi.jpeg" alt="Proyecto 3">
+        <div class="item-content">
+          <h3>PAVIMENACION Y COLOCACION DE ADOQUINES</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="d.jpeg" alt="Proyecto 4">
+        <div class="item-content">
+          <h3>EDIFICACION</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SECCIÓN: SERVICIOS (ACORDEÓN) -->
+<section id="services">
+  <h2 class="section-title reveal">Nuestros Servicios</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" tabindex="0">
+        <h4>Diseño Arquitectónico</h4>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Desarrollamos diseños arquitectónicos personalizados, combinando estética, funcionalidad y sostenibilidad para crear espacios únicos y modernos.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" tabindex="0">
+        <h4>Gestión Integral de Proyectos</h4>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Planificamos, coordinamos y supervisamos cada etapa del proyecto, garantizando calidad, eficiencia y el cumplimiento de plazos establecidos.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" tabindex="0">
+        <h4>Construcción y Remodelación</h4>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Realizamos obras de construcción y remodelación, asegurando resultados duraderos y estéticamente impresionantes.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" tabindex="0">
+        <h4>Consultoría y Asesoramiento</h4>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Brindamos asesoramiento técnico y consultoría especializada en ingeniería y construcción, optimizando procesos y recursos para cada proyecto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- SECCIÓN: TESTIMONIOS -->
+  <section id="testimonials">
+    <h2 class="section-title reveal">OBRAS 🏗 </h2>
+    <div class="testimonials-container">
+      <div class="testimonial reveal">
+        <p> Pavimentacion de hormigon Hormigón y armado de estructura  en el AEROPUETO GENERAL MOSCONI COMODORO RIVADAVIA –subcontratista de Empresa SUDAMERICANA año 2018..”</p>
+        <p class="client">Cliente Internacional</p>
+      </div>
+      <div class="testimonial reveal">
+        <p>-Pavimento de hormigon Parque Eolico Malaspina-subcontrtao Rigel S.R.L. año 2020.
+          - Colectora RUTA NACIONAL N°3 Y CALLE JULIO A. CABEZAS, Concurso privado de precios N°17/2020 -MUNICIPALIDAD DE COMODORO RIVADAVIA
+          - Cordon cuneta calle Rio Pico Barrio km3 –Concurso privado de precios N°41/2019-MUNICIPALIDAD DE COMODORO RIVADAVIA.
+           -Pavimento intertrabado playon Petroquimica año 2020.</p>
+        <p class="client">SERVICIOS OBRAS PUBLICA</p>
+      </div>
+      <div class="testimonial reveal">
+        <p>Servicios integral y  suministro de materiales  para el montaje de redes de distribución en áreas convencionales, .”</p>
+        <p class="client"> SERVICIOS A EMPRESAS DEL SECTOR PETROLERO </p>
+      </div>
+    </div>
+  </section>
+  <div>
+    <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contacto por WhatsApp</title>
+    <!-- Enlazamos nuestro CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Contenedor principal -->
+    <main class="container">
+      <h1>¡Contáctanos por WhatsApp!</h1>
+      <p>Si deseas más información o Tenes alguna duda, haz clic en el botón de abajo para enviarme un mensaje por WhatsApp.</p>
+      <!-- Botón de WhatsApp -->
+      <!-- Sustituye "5491128319760" por tu número real de WhatsApp.
+           Sustituye "%20" por espacios y cambia el texto a gusto. -->
+      <a 
+        href="https://wa.me/5491128319760?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20..."
+        class="btn-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      WhatsApp 11 2831-9760
+      </a>
+    </main>
+  </body>
+  </html>
+  <!-- SECCIÓN: NUESTRO EQUIPO -->
+  <section id="team">
+    <h2 class="section-title reveal">Nuestro Equipo</h2>
+    <div class="team-grid">
+      <div class="team-member reveal">
+        <img src="mauricio.JPG" alt="Miembro 1">
+        <h3>MAURICIO AGÜERO</h3>
+        <p></p>
+      </div>
+      <div class="team-member reveal">
+        <img src="gabriel.png" alt="Miembro 2">
+        <h3>GABRIEL AGÜERO</h3>
+        <p></p>
+      </div>
+      <div class="team-member reveal">
+        <img src="ayrton.jpg" alt="Miembro 3">
+        <h3>AYRTON AGÜERO</h3>
+        <p></p>
+      </div>
+      <div class="team-member reveal">
+        <img src="bruno.jpg" alt="Miembro 4">
+        <h3>BRUNO AGÜERO</h3>
+        <p></p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SECCIÓN: CONTACTO -->
+  <section id="contact">
+    <h2 class="section-title reveal">Contáctanos</h2>
+    <div class="contact-container">
+      <form class="contact-form" action="https://formsubmit.co/aguerosociedades@gmail.com" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" placeholder="Mensaje" rows="5" required></textarea>
+        <button type="submit">Enviar</button>
+  
+        <input type="hidden" name="_next" value="http://127.0.0.1:5501/index.html"> 
+        <input type="hidden" name="_captcha" value="false">
+      </form>
+    </div>
+  </section>
+  
+
+  
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Constructora ALISTAR. Todos los derechos reservados.</p>
+    <p> GMAIL : aguerosociedades@gmail.com</p>
+    <p>CELULAR : 2975150438</p>
+    <div class="social">
+      <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+  
+  <!-- ====================================================
+       JAVASCRIPT PARA INTERACTIVIDAD
+  ==================================================== -->
+  <script>
+    // Menú móvil: Toggle del menú hamburguesa
+    const hamburger = document.querySelector('.hamburger');
+    const navUl = document.querySelector('nav ul');
+    
+    hamburger.addEventListener('click', () => {
+      navUl.classList.toggle('show');
+    });
+    
+    // Funcionalidad del acordeón en la sección de servicios
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+        // Cerrar otros acordeones (opcional)
+        accordionHeaders.forEach(otherHeader => {
+          if (otherHeader !== header) {
+            otherHeader.parentElement.classList.remove('active');
+          }
+        });
+      });
+      // Permitir interacción con teclado
+      header.addEventListener('keydown', (e) => {
+        if(e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+    
+    // Reveal Animation: Aparecer al hacer scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    reveals.forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+
